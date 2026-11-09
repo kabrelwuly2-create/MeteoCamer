@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultez la météo et les prévisions près de chez vous.">
+    <title>Météo chez vous</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>La météo près de vous</h1>
+            <p>Retrouvez les conditions actuelles et les prévisions sur cinq jours.</p>
+            <button type="button" id="locateButton">Utiliser ma position</button>
+        </header>
+        <form id="weatherForm">
+            <label for="cityName">Ou recherchez une ville</label>
+            <input type="text" id="cityName" name="cityName" required
+                placeholder="Ex. Douala, Paris…" autocomplete="address-level2">
+            <button type="submit" id="searchButton">Rechercher</button>
+        </form>
+        <p id="statusMessage" role="status" aria-live="polite"></p>
+        <section id="weather" aria-labelledby="locationName" hidden>
+            <h2 id="locationName"></h2>
+            <div id="weatherDetails"></div>
+            <section id="forecast" aria-labelledby="forecastTitle" hidden>
+                <h2 id="forecastTitle">Prévisions sur 5 jours</h2>
+                <div id="forecastDetails"></div>
+            </section>
+        </section>
+    </main>
+    <script src="../js/previsions.js" defer></script>
+    <script src="../js/script.js" defer></script>
+</body>
+</html>

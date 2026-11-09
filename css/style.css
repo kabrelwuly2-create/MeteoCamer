@@ -1,0 +1,331 @@
+:root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #f4f7ff;
+    background: #0a1020;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+    --surface: rgba(21, 31, 54, 0.78);
+    --surface-raised: rgba(31, 44, 71, 0.82);
+    --border: rgba(198, 214, 255, 0.12);
+    --muted: #aab6cd;
+    --accent: #8db4ff;
+    --accent-strong: #6496ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    padding: clamp(1.25rem, 5vw, 4rem) 1rem;
+    background:
+        radial-gradient(ellipse at 10% 0%, rgba(56, 103, 194, 0.28), transparent 38rem),
+        radial-gradient(ellipse at 100% 35%, rgba(29, 151, 166, 0.13), transparent 34rem),
+        #0a1020;
+}
+
+main {
+    width: min(100%, 1000px);
+    margin: 0 auto;
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    padding: clamp(1.5rem, 5vw, 3.25rem);
+    border: 1px solid var(--border);
+    border-radius: 1.75rem;
+    background:
+        linear-gradient(118deg, rgba(33, 63, 117, 0.94), rgba(20, 42, 78, 0.88) 58%, rgba(18, 67, 82, 0.82));
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+}
+
+header::after {
+    position: absolute;
+    top: -7rem;
+    right: -4rem;
+    width: 21rem;
+    height: 21rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2rem rgba(255, 255, 255, 0.025), 0 0 0 4rem rgba(255, 255, 255, 0.02);
+    content: "";
+    pointer-events: none;
+}
+
+header h1 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 720;
+    letter-spacing: -0.055em;
+    line-height: 1.08;
+}
+
+header p {
+    position: relative;
+    z-index: 1;
+    max-width: 38rem;
+    margin: 0.9rem 0 1.65rem;
+    color: #d3def3;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    line-height: 1.6;
+}
+
+form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem;
+    align-items: end;
+    padding: 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 1.1rem;
+    background: var(--surface);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+label {
+    grid-column: 1 / -1;
+    color: #e5ecfa;
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+input,
+button {
+    min-height: 3rem;
+    border-radius: 0.75rem;
+    font: inherit;
+}
+
+input {
+    width: 100%;
+    min-width: 0;
+    padding: 0.75rem 0.95rem;
+    border: 1px solid rgba(192, 207, 238, 0.2);
+    outline: none;
+    color: #f7f9ff;
+    background: rgba(7, 13, 27, 0.6);
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input::placeholder {
+    color: #8492aa;
+}
+
+input:focus-visible {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(141, 180, 255, 0.2);
+}
+
+button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid transparent;
+    color: #0b1730;
+    background: linear-gradient(135deg, #a9c8ff, #78a5ff);
+    box-shadow: 0 6px 20px rgba(79, 133, 238, 0.23);
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.07);
+    box-shadow: 0 9px 24px rgba(79, 133, 238, 0.32);
+}
+
+button:focus-visible {
+    outline: 3px solid #d5e4ff;
+    outline-offset: 3px;
+}
+
+#locateButton {
+    position: relative;
+    z-index: 1;
+    color: #eafffb;
+    background: rgba(11, 25, 45, 0.4);
+    border-color: rgba(223, 240, 255, 0.24);
+    box-shadow: none;
+}
+
+#locateButton:hover:not(:disabled) {
+    background: rgba(11, 25, 45, 0.7);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: 0.62;
+}
+
+#statusMessage {
+    min-height: 1.5rem;
+    margin: 0.9rem 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+#weather {
+    margin-top: 1.25rem;
+    animation: rise-in 420ms ease both;
+}
+
+#locationName {
+    margin: 0 0 1.15rem;
+    font-size: clamp(1.55rem, 4vw, 2.1rem);
+    letter-spacing: -0.035em;
+}
+
+#weatherDetails {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+#forecast {
+    margin-top: 2.4rem;
+}
+
+#forecastTitle {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    letter-spacing: -0.025em;
+}
+
+#forecastDetails {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.weather-card {
+    min-width: 0;
+    padding: 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: linear-gradient(155deg, var(--surface-raised), var(--surface));
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(14px);
+}
+
+#weatherDetails .weather-card {
+    min-height: 8.5rem;
+}
+
+.weather-card h3 {
+    margin: 0 0 0.65rem;
+    color: #b6c4df;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.weather-card p {
+    margin: 0;
+    color: #f5f8ff;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+#forecastDetails .weather-card {
+    padding: 1rem;
+}
+
+#forecastDetails .weather-card h3 {
+    color: var(--accent);
+    text-transform: capitalize;
+}
+
+#forecastDetails .weather-card p {
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@keyframes rise-in {
+    from {
+        transform: translateY(8px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 760px) {
+    #weatherDetails {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #forecastDetails {
+        grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem 0.75rem 2rem;
+    }
+
+    header {
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+        padding: 0.9rem;
+    }
+
+    label {
+        grid-column: auto;
+    }
+
+    #weatherDetails {
+        gap: 0.6rem;
+    }
+
+    #weatherDetails .weather-card {
+        min-height: 7.5rem;
+        padding: 0.9rem;
+    }
+
+    #forecastDetails {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
